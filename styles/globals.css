@@ -6,4 +6,17 @@
 .App {
   width: 100vw;
   height: 100vh;
+  margin-top: 10px;
+}
+
+.button-bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.each-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
