@@ -7,9 +7,15 @@ export default function Home() {
   const [operations, setOperations] = React.useState([]);
   const [task, setTask] = React.useState();
 
+  console.log(task);
+
   return (
     <div className='App'>
-      <StartPage operations={operations} setOperations={setOperations} />
+      <StartPage
+        operations={operations}
+        setOperations={setOperations}
+        setTask={setTask}
+      />
     </div>
   );
 }

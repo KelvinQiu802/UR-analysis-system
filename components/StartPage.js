@@ -1,6 +1,7 @@
 import { Autocomplete, Button, TextField, Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import React from 'react';
+import { task } from '../utils/NOS';
 
 const columns = [
   { field: 'id', headerName: 'OperationID', width: 360, editable: false },
@@ -36,7 +37,7 @@ const columns = [
   },
 ];
 
-function StartPage({ operations, setOperations }) {
+function StartPage({ operations, setOperations, setTask }) {
   const [pageSize, setPageSize] = React.useState(10);
   const [allTimestamps, setAllTimestamps] = React.useState([]);
   const [filterModel, setFilterModel] = React.useState({
@@ -97,24 +98,13 @@ function StartPage({ operations, setOperations }) {
             disablePortal
             sx={{ width: 200 }}
             id='time-stamps'
-            options={allTimestamps}
+            options={task}
             renderInput={(params) => <TextField {...params} label='Task' />}
             onChange={(event, newValue) => {
               if (newValue) {
-                setFilterModel({
-                  items: [
-                    {
-                      id: 1,
-                      columnField: 'id',
-                      operatorValue: 'contains',
-                      value: newValue,
-                    },
-                  ],
-                });
+                setTask(newValue);
               } else {
-                setFilterModel({
-                  items: [],
-                });
+                setTask();
               }
             }}
           />
