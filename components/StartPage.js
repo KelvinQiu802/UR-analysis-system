@@ -44,19 +44,33 @@ function StartPage({ operations, setOperations, setTask }) {
     items: [],
   });
 
+  async function getAllOperations(postData) {
+    const res = await fetch('/api/getAllOperations', {
+      method: 'POST',
+      body: JSON.stringify(postData),
+    });
+    return await res.json();
+  }
+
+  const getAllOperationSequences = async () => {
+    const _ = await getAllOperations({ filter: null });
+    let entrySet = Array.from(
+      new Set(
+        _.operations.map((item) => {
+          return item.operationId.split('-')[1];
+        })
+      )
+    );
+    setAllTimestamps(entrySet);
+    _.operations = _.operations.map((item) => {
+      item.id = item.operationId;
+      return item;
+    });
+    setOperations(_.operations);
+  };
+
   React.useEffect(() => {
-    async function getOperations() {
-      const res = await fetch('/api/getAllOperations', { method: 'GET' });
-      const result = await res.json();
-      const operations = result.operations;
-      operations.forEach((op) => (op.id = op.operationId));
-      const timestamps = Array.from(
-        new Set(operations.map((item) => item.operationId.split('-')[1]))
-      );
-      setOperations(operations);
-      setAllTimestamps(timestamps);
-    }
-    getOperations();
+    const _ = getAllOperationSequences();
   }, []);
 
   return (
