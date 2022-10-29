@@ -1,5 +1,4 @@
-// 按顺序写task里面所有的functions
-export const task = ['Login'];
+export const task = ['Task1', 'Task2'];
 
 // 每一个属性对应一个function，里面的数组存放所有可能的NOS
 export const NOS = {

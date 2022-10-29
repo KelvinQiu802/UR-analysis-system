@@ -13,6 +13,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
 }
 
 .each-button {

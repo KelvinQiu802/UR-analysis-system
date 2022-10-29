@@ -75,9 +75,9 @@ function StartPage({ operations, setOperations, setTask }) {
 
   return (
     <>
-      <div className='button-bar'>
+      <div className='button-bar' style={{ marginTop: '10px' }}>
         <div className='each-button'>
-          <p>Timestamp: </p>
+          <h2>Timestamp: </h2>
           <Autocomplete
             disablePortal
             sx={{ width: 200 }}
@@ -107,7 +107,7 @@ function StartPage({ operations, setOperations, setTask }) {
           />
         </div>
         <div className='each-button'>
-          <p>Task: </p>
+          <h2>Task: </h2>
           <Autocomplete
             disablePortal
             sx={{ width: 200 }}
@@ -123,13 +123,21 @@ function StartPage({ operations, setOperations, setTask }) {
             }}
           />
         </div>
-        <Button variant='contained'>Start Analyzing</Button>
+        <Button
+          variant='contained'
+          color='warning'
+          sx={{ width: 200, height: 60 }}
+        >
+          Start Analyzing
+        </Button>
       </div>
       <Box
         sx={{
-          width: '100%',
-          height: '100%',
+          width: '80%',
+          height: '80%',
+          margin: '0 auto',
           mt: 1,
+          border: '2px solid #ccc',
         }}
       >
         <DataGrid
