@@ -186,9 +186,7 @@ function AnalylzePage() {
             sx={{ width: 200 }}
             id='time-stamps'
             options={functions}
-            renderInput={(params) => (
-              <TextField {...params} label='Function/Task' />
-            )}
+            renderInput={(params) => <TextField {...params} />}
             onChange={(event, newValue) => {}}
           />
         </div>
@@ -199,9 +197,7 @@ function AnalylzePage() {
             sx={{ width: 200 }}
             id='time-stamps'
             options={usabilities}
-            renderInput={(params) => (
-              <TextField {...params} label='Usability' />
-            )}
+            renderInput={(params) => <TextField {...params} />}
             onChange={(event, newValue) => {}}
           />
         </div>
@@ -213,114 +209,129 @@ function AnalylzePage() {
           Show Result
         </Button>
       </div>
-      <TableContainer
-        component={Paper}
-        sx={{
-          width: '70%',
-          margin: '30px auto',
-          border: '2px solid blue',
-          textAlign: 'center',
-        }}
-      >
-        <h1 style={{ margin: '5px' }}>Satisfaction Levels of URs</h1>
-        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Effectiveness
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Efficiency
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Fault Tolerance
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Learnability
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Operability
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Visibility
-              </TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {rows1.map((row, index) => (
-              <TableRow
-                key={index}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component='th' scope='row'>
-                  {row.name}
-                </TableCell>
-                <TableCell align='center'>{row.ffectiveness}</TableCell>
-                <TableCell align='center'>{row.fficiency}</TableCell>
-                <TableCell align='center'>{row.faultTolerance}</TableCell>
-                <TableCell align='center'>{row.learnability}</TableCell>
-                <TableCell align='center'>{row.operability}</TableCell>
-                <TableCell align='center'>{row.visibility}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      <ReactFlow
-        elements={visibilityTemplate}
+      <div
         style={{
-          margin: '0 auto',
-          width: '60vw',
-          height: '50vh',
-          border: '2px solid #666',
-          padding: '10px',
-        }}
-      />
-
-      <TableContainer
-        component={Paper}
-        sx={{
-          width: '70%',
-          margin: '30px auto',
-          border: '2px solid blue',
-          textAlign: 'center',
+          display: 'flex',
+          height: '80vh',
+          gap: '30px',
+          padding: '30px',
         }}
       >
-        <h1 style={{ margin: '5px' }}>Detected Usability Smells</h1>
-        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Problematic Page
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Problematic Function/Widget
-              </TableCell>
-              <TableCell sx={{ fontSize: '1.2em' }} align='center'>
-                Usablity Smell
-              </TableCell>
-            </TableRow>
-          </TableHead>
+        <div
+          className='left'
+          style={{ width: '40vw', height: '80vh', marginTop: '100px' }}
+        >
+          <TableContainer
+            component={Paper}
+            sx={{
+              width: '100%',
+              margin: '30px auto',
+              marginBottom: '80px',
+              border: '2px solid #ccc',
+              textAlign: 'center',
+            }}
+          >
+            <h1 style={{ margin: '5px' }}>Satisfaction Levels of URs</h1>
+            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Effectiveness
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Efficiency
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Fault Tolerance
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Learnability
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Operability
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Visibility
+                  </TableCell>
+                </TableRow>
+              </TableHead>
 
-          <TableBody>
-            {rows2.map((row, index) => (
-              <TableRow
-                key={index}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component='th' scope='row'>
-                  {row.name}
-                </TableCell>
-                <TableCell align='center'>{row.page}</TableCell>
-                <TableCell align='center'>{row.widget}</TableCell>
-                <TableCell align='center'>{row.smell}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              <TableBody>
+                {rows1.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component='th' scope='row'>
+                      {row.name}
+                    </TableCell>
+                    <TableCell align='center'>{row.ffectiveness}</TableCell>
+                    <TableCell align='center'>{row.fficiency}</TableCell>
+                    <TableCell align='center'>{row.faultTolerance}</TableCell>
+                    <TableCell align='center'>{row.learnability}</TableCell>
+                    <TableCell align='center'>{row.operability}</TableCell>
+                    <TableCell align='center'>{row.visibility}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <TableContainer
+            component={Paper}
+            sx={{
+              width: '100%',
+              margin: '30px auto',
+              border: '2px solid #ccc',
+              textAlign: 'center',
+            }}
+          >
+            <h1 style={{ margin: '5px' }}>Detected Usability Smells</h1>
+            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Problematic Page
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Problematic Function/Widget
+                  </TableCell>
+                  <TableCell sx={{ fontSize: '1.2em' }} align='center'>
+                    Usablity Smell
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {rows2.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component='th' scope='row'>
+                      {row.name}
+                    </TableCell>
+                    <TableCell align='center'>{row.page}</TableCell>
+                    <TableCell align='center'>{row.widget}</TableCell>
+                    <TableCell align='center'>{row.smell}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+        <div className='right'>
+          <ReactFlow
+            elements={visibilityTemplate}
+            style={{
+              margin: '0 auto',
+              width: '60vw',
+              border: '2px solid #ccc',
+              padding: '10px',
+            }}
+          />
+        </div>
+      </div>
     </>
   );
 }

@@ -7,15 +7,20 @@ import AnalylzePage from '../components/AnalylzePage';
 export default function Home() {
   const [operations, setOperations] = React.useState([]);
   const [task, setTask] = React.useState();
+  const [page, setPage] = React.useState('first');
 
   return (
     <div className='App' style={{ overflow: 'auto' }}>
-      {/* <StartPage
-        operations={operations}
-        setOperations={setOperations}
-        setTask={setTask}
-      /> */}
-      <AnalylzePage />
+      {page === 'first' ? (
+        <StartPage
+          operations={operations}
+          setOperations={setOperations}
+          setTask={setTask}
+          setPage={setPage}
+        />
+      ) : (
+        <AnalylzePage />
+      )}
     </div>
   );
 }

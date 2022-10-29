@@ -37,7 +37,7 @@ const columns = [
   },
 ];
 
-function StartPage({ operations, setOperations, setTask }) {
+function StartPage({ operations, setOperations, setTask, setPage }) {
   const [pageSize, setPageSize] = React.useState(10);
   const [allTimestamps, setAllTimestamps] = React.useState([]);
   const [filterModel, setFilterModel] = React.useState({
@@ -75,17 +75,15 @@ function StartPage({ operations, setOperations, setTask }) {
 
   return (
     <>
-      <div className='button-bar' style={{ marginTop: '10px' }}>
+      <div className='button-bar' style={{ marginTop: '25px' }}>
         <div className='each-button'>
-          <h2>Timestamp: </h2>
+          <h2>Choose the UOS: </h2>
           <Autocomplete
             disablePortal
-            sx={{ width: 200 }}
+            sx={{ width: 300 }}
             id='time-stamps'
             options={allTimestamps}
-            renderInput={(params) => (
-              <TextField {...params} label='Timestamp' />
-            )}
+            renderInput={(params) => <TextField {...params} />}
             onChange={(event, newValue) => {
               if (newValue) {
                 setFilterModel({
@@ -113,7 +111,7 @@ function StartPage({ operations, setOperations, setTask }) {
             sx={{ width: 200 }}
             id='time-stamps'
             options={task}
-            renderInput={(params) => <TextField {...params} label='Task' />}
+            renderInput={(params) => <TextField {...params} />}
             onChange={(event, newValue) => {
               if (newValue) {
                 setTask(newValue);
@@ -127,6 +125,9 @@ function StartPage({ operations, setOperations, setTask }) {
           variant='contained'
           color='warning'
           sx={{ width: 200, height: 60 }}
+          onClick={() => {
+            setPage('second');
+          }}
         >
           Start Analyzing
         </Button>
@@ -136,7 +137,7 @@ function StartPage({ operations, setOperations, setTask }) {
           width: '80%',
           height: '80%',
           margin: '0 auto',
-          mt: 1,
+          mt: 5,
           border: '2px solid #ccc',
         }}
       >
