@@ -219,7 +219,7 @@ function AnalylzePage() {
       >
         <div
           className='left'
-          style={{ width: '40vw', height: '80vh', marginTop: '100px' }}
+          style={{ width: '50vw', height: '80vh', marginTop: '100px' }}
         >
           <TableContainer
             component={Paper}
@@ -325,7 +325,7 @@ function AnalylzePage() {
             elements={visibilityTemplate}
             style={{
               margin: '0 auto',
-              width: '60vw',
+              width: '50vw',
               border: '2px solid #ccc',
               padding: '10px',
             }}
